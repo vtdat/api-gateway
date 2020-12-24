@@ -1,0 +1,65 @@
+basePath: /api/v1
+definitions:
+  controllers.AppResponse:
+    properties:
+      code:
+        type: integer
+      description:
+        type: string
+      message:
+        type: object
+    type: object
+  models.Quantile:
+    properties:
+      percentile:
+        type: number
+      pool:
+        items:
+          type: integer
+        type: array
+    required:
+    - percentile
+    - pool
+    type: object
+host: localhost:9090
+info:
+  contact:
+    email: trantathuy.hust@gmail.com
+    name: Tran Tat Huy
+  description: This is api gateway documentation
+  license: {}
+  title: API Gateway Application
+  version: 1.0.0
+paths:
+  /statistics:
+    post:
+      consumes:
+      - application/json
+      description: |-
+        Calculate Quantile point value
+        Validate Information :If input type is not json, return 400 - Bad request;
+        Else If not contain any value in pool, return 400 - Bad request;
+        Else If not contain valid percentile, return 400 - Bad request;
+        Else return status ok with quantile value
+      parameters:
+      - description: calculate quantile
+        in: body
+        name: quantile
+        required: true
+        schema:
+          $ref: '#/definitions/models.Quantile'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.AppResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controllers.AppResponse'
+      summary: Calculate Quantile point value
+      tags:
+      - statistics
+swagger: "2.0"

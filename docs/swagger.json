@@ -1,0 +1,91 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is api gateway documentation",
+        "title": "API Gateway Application",
+        "contact": {
+            "name": "Tran Tat Huy",
+            "email": "trantathuy.hust@gmail.com"
+        },
+        "license": {},
+        "version": "1.0.0"
+    },
+    "host": "localhost:9090",
+    "basePath": "/api/v1",
+    "paths": {
+        "/statistics": {
+            "post": {
+                "description": "Calculate Quantile point value\nValidate Information :If input type is not json, return 400 - Bad request;\nElse If not contain any value in pool, return 400 - Bad request;\nElse If not contain valid percentile, return 400 - Bad request;\nElse return status ok with quantile value",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "statistics"
+                ],
+                "summary": "Calculate Quantile point value",
+                "parameters": [
+                    {
+                        "description": "calculate quantile",
+                        "name": "quantile",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Quantile"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.AppResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.AppResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "controllers.AppResponse": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "object"
+                }
+            }
+        },
+        "models.Quantile": {
+            "type": "object",
+            "required": [
+                "percentile",
+                "pool"
+            ],
+            "properties": {
+                "percentile": {
+                    "type": "number"
+                },
+                "pool": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                }
+            }
+        }
+    }
+}

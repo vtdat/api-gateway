@@ -1,0 +1,17 @@
+version: '3'
+services:
+  api_gateway:
+    image: "api-gateway:1.0.0"
+    container_name: api-gateway
+    network_mode: "host"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "10"
+    ports:
+      - "9090:9090"
+networks:
+  default:
+    external:
+      name: kian-core

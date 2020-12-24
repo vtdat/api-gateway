@@ -3,15 +3,15 @@ A simple service for calculate statistics
 
 
 ## Table of contents
-1. [Build](##build)
-2. [Run](##run)
-3. [Testing](##testing)
-4. [Documentation](##documentation)
-    * [Endpoint](###endpoint)
-    * [Reponse format](###reponse-format)
-    * [Project structure](###project-structure)
-5. [Contributor](##contributor)
-6. [Issues](##issues)
+1. [Build](#build)
+2. [Run](#run)
+3. [Testing](#testing)
+4. [Documentation](#documentation)
+    * [Endpoint](#endpoint)
+    * [Reponse format](#reponse-format)
+    * [Project structure](#project-structure)
+5. [Contributor](#contributor)
+6. [Issues](#issues)
 
 ## Build
 Prerequisite:  

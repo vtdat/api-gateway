@@ -22,7 +22,6 @@ var doc = `{
             "name": "Tran Tat Huy",
             "email": "trantathuy.hust@gmail.com"
         },
-        "license": {},
         "version": "{{.Version}}"
     },
     "host": "{{.Host}}",

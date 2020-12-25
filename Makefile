@@ -1,5 +1,5 @@
 VERSION= 1.0.0
-FLAGS= -v -mod=vendor
+FLAGS= -v -mod=vendor -ldflags="-s -w"
 
 default: test
 

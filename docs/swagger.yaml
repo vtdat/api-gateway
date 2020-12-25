@@ -27,7 +27,6 @@ info:
     email: trantathuy.hust@gmail.com
     name: Tran Tat Huy
   description: This is api gateway documentation
-  license: {}
   title: API Gateway Application
   version: 1.0.0
 paths:

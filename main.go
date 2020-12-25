@@ -2,13 +2,14 @@ package main
 
 import (
 	"fmt"
+	"log"
+
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 	"github.com/swaggo/files" // swagger embed files
 	"github.com/swaggo/gin-swagger"
 	"github.com/twinj/uuid"
-	"log"
 
 	"github.com/HrTran/api-gateway/controllers"
 )
@@ -80,5 +81,5 @@ func main() {
 	//workerManager.Start()
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	// listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
-	log.Fatalf("Error when start server: ", r.Run("0.0.0.0:9090"))
+	log.Fatalf("Error when start server: %s", r.Run("0.0.0.0:9090"))
 }

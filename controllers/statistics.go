@@ -1,10 +1,12 @@
 package controllers
 
 import (
-	"benchmark/api-gateway/models"
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
+
+	"github.com/HrTran/api-gateway/models"
 )
 
 type Handler struct {
@@ -15,7 +17,7 @@ func NewHandler() *Handler {
 	}
 }
 
-func (h *Handler) MakeHandler (g *gin.RouterGroup) {
+func (h *Handler) MakeHandler(g *gin.RouterGroup) {
 	group := g.Group("/statistics")
 	group.POST("/quantile", h.caclQuantile)
 }
@@ -34,7 +36,7 @@ func (h *Handler) MakeHandler (g *gin.RouterGroup) {
 // @Success 200 {object} controllers.AppResponse
 // @Failure 400 {object} controllers.AppResponse
 // @Router /statistics [post]
-func (h *Handler) caclQuantile(c *gin.Context)  {
+func (h *Handler) caclQuantile(c *gin.Context) {
 	var quantile models.Quantile
 
 	if err := c.ShouldBindJSON(&quantile); err != nil {

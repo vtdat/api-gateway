@@ -3,9 +3,9 @@ package controllers
 import "github.com/gin-gonic/gin"
 
 type AppResponse struct {
-	Message interface{}   `json:"message"`
-	Code    int      `json:"code"`
-	Desc    string   `json:"description"`
+	Message interface{} `json:"message"`
+	Code    int         `json:"code"`
+	Desc    string      `json:"description"`
 }
 
 func Response(code int, message interface{}, desc string) AppResponse {

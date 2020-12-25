@@ -1,16 +1,18 @@
 package controllers
 
 import (
-	"benchmark/api-gateway/models"
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"io"
 	"net/http"
 	"net/http/httptest"
 	"reflect"
 	"testing"
+
+	"github.com/gin-gonic/gin"
+
+	"github.com/HrTran/api-gateway/models"
 )
 
 func TestHandler_caclQuantile(t *testing.T) {
@@ -158,14 +160,12 @@ func TestHandler_caclQuantile(t *testing.T) {
 				t.Fatalf("Wrong output, got %d, want %v", w.Code, tt.want["code"])
 			}
 
-
 			fmt.Println(string(w.Body.Bytes()))
 			var got map[string]interface{}
 			err = json.Unmarshal(w.Body.Bytes(), &got)
 			if err != nil {
 				t.Fatal(err)
 			}
-
 
 			if !reflect.DeepEqual(got, tt.want) {
 				t.Fatalf("Wrong output, got %v, want %v", got, tt.want)

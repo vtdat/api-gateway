@@ -1,7 +1,6 @@
 package main
 
 import (
-	"benchmark/api-gateway/controllers"
 	"fmt"
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
@@ -10,13 +9,15 @@ import (
 	"github.com/swaggo/gin-swagger"
 	"github.com/twinj/uuid"
 	"log"
+
+	"github.com/HrTran/api-gateway/controllers"
 )
 
 //CORSMiddleware ...
 //CORS (Cross-Origin Resource Sharing)
 func CORSMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		c.Writer.Header().Set("Access-Control-Allow-Origin", "http://localhost")
+		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
 		c.Writer.Header().Set("Access-Control-Max-Age", "86400")
 		c.Writer.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, UPDATE")
 		c.Writer.Header().Set("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Origin, Authorization, Accept, Client-Security-Token, Accept-Encoding, x-access-token")
@@ -71,10 +72,9 @@ func main() {
 		})
 	})
 
-	handler :=  controllers.NewHandler()
+	handler := controllers.NewHandler()
 	v1 := r.Group("/api/v1")
 	handler.MakeHandler(v1)
-
 
 	// start
 	//workerManager.Start()

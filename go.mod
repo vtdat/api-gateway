@@ -1,4 +1,4 @@
-module benchmark/api-gateway
+module github.com/HrTran/api-gateway
 
 go 1.15
 
